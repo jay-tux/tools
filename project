@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [[ $1 = -h ]]; then
+    echo "Usage: project <name>"
+    echo "Configure projects in ~/.config/projects using syntax:"
+    echo "<name>:<editor or ide>:<path>"
+elif [[ $1 = '' ]]; then
+    echo "Please specify a project to open, or use -h for help"
+    exit 120
+else
+    found=false
+    for line in `cat ~/.config/projects`; do
+        name=`echo "$line" | cut -d':' -f1`
+        if [[ $name = $1 ]]; then
+            found=true
+            cmnd=`echo "$line" | cut -d':' -f2`
+            arg=`echo "$line" | cut -d':' -f3`
+
+            if command -v $cmnd; then
+                echo "Running '$cmnd $arg'"
+                $cmnd $arg &
+            else
+                echo "Command $cmnd doesn't exist. Please install it first."
+                exit 125
+            fi
+        fi
+    done
+
+    if [[ $found = false ]]; then
+        echo "Project $1 is unknown. Please specify an existing project."
+        echo "Your projects: "
+        for line in `cat ~/.config/projects`; do
+            echo "$line" | cut -d':' -f2
+        done
+        exit 115
+    fi
+fi
