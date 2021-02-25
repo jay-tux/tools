@@ -14,8 +14,12 @@ if [[ $1 = set ]]; then
     i3 workspace number $2
 elif [[ $1 = tab ]]; then
     ws=`i3-msg -t get_workspaces | sed 's/,/\n/g' | grep num | cut -d':' -f2`
+    echo $ws
     next=$(($current+$2))
     next=$(($next%10))
+    while [ $next -lt 0 ]; do
+	    next=$(($next-10))
+    done
     echo $next >$pth
     echo $next
     i3 workspace number $next
