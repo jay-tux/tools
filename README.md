@@ -23,3 +23,8 @@ It is also recommended to make sure the following line is run whenever your X11 
 ```sh
 ws-tab exit
 ```
+
+## touchpad
+**Use:** generic stript to enable tapping on laptop touchpads  
+**Prerequisites:** libinput and xinput
+**Configuration:** none, on its own (you can add it to your ``.xinitrc`` for example)
