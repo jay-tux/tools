@@ -26,5 +26,5 @@ ws-tab exit
 
 ## touchpad
 **Use:** generic stript to enable tapping on laptop touchpads  
-**Prerequisites:** libinput and xinput
+**Prerequisites:** libinput and xinput  
 **Configuration:** none, on its own (you can add it to your ``.xinitrc`` for example)
