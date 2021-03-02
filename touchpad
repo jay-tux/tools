@@ -5,5 +5,5 @@ taps=`xinput list-props $tpid | grep "Tapping Enabled (" | cut -d'(' -f2 | cut -
 
 for tap in $taps; do
     echo "Device $tpid, prop $tap"
-    sudo xinput set-prop $tpid $tap 1
+    xinput set-prop $tpid $tap 1
 done
