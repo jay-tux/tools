@@ -3,13 +3,14 @@
 Below are all the tools in this repository, with their prerequisites and use-cases.
 
 ## project
-**Use:** the ``project`` script is used for quick opening of projects, using a small configuration file.  
+**Use:** the ``project`` script is used for quick opening of projects, using a small configuration file and a small cache file.  
 **Prerequisites:** none, on its own.  
 **Configuration:** create a file called ``~/.config/projects`` with the following syntax:  
 ```
 <project name>:<editor, ide or command>:<path>
 ```
 What the script does: when you call ``project <project name>``, it runs ``<editor, ide or command> <path>``. It aims to be run from dbus (in i3 for example) to quickly open projects to coninue working on them.  
+Calling the script as ``project`` (without arguments) will attempt to read the cache file (``~/.config/lpr``) to determine the last opened project, which is then used as argument.
 
 ## ws-tab
 **Use:** simple tabbing between i3 workspaces  
